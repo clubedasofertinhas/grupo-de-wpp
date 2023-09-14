@@ -1,39 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        body {
-            background-color: #D90D74; /* Cor de fundo personalizada */
-            font-family: 'Roca One', sans-serif; /* Fonte personalizada */
-            font-size: 20px; /* Tamanho do texto personalizado */
-            color: #FFFFFF; /* Cor do texto personalizada */
-            text-align: center; /* Centraliza o texto na tela */
-            padding-top: 30vh; /* Espaço superior para centralizar verticalmente */
-        }
-    </style>
-</head>
-<body>
-    Redirecionando...
+    <title>Redirecionamento de Grupo</title>
     <script>
-        // Lista de grupos de WhatsApp
-        var gruposWhatsapp = [
-            "https://chat.whatsapp.com/EQT2n32N5oHLXFQchFrPO3",
-            "https://chat.whatsapp.com/LopwSWTIIVoHcFfPrMBbMg",
+        var grupos = [
+            'https://chat.whatsapp.com/EQT2n32N5oHLXFQchFrPO3',
+            'https://chat.whatsapp.com/LopwSWTIIVoHcFfPrMBbMg',
+            // Adicione mais grupos conforme necessário
         ];
-
-        // Índice atual do grupo
-        var indiceAtual = 0;
+        var grupoAtual = 0;
 
         function redirecionar() {
-            // Redireciona para o grupo atual
-            window.location.href = gruposWhatsapp[indiceAtual];
-
-            // Atualiza o índice para o próximo grupo (cíclico)
-            indiceAtual = (indiceAtual + 1) % gruposWhatsapp.length;
+            if (grupoAtual >= grupos.length) {
+                grupoAtual = 0; // Reiniciar para o primeiro grupo quando todos estiverem cheios
+            }
+            window.location.href = grupos[grupoAtual];
+            grupoAtual++;
         }
-
+    </script>
+</head>
+<body>
+    <h1>Redirecionando...</h1>
+    <script>
         // Defina um intervalo (em milissegundos) para verificar se o grupo está cheio e redirecionar
-        var intervalo = 0; // Redirecionar instantaneamente
+        var intervalo = 5000; // Por exemplo, a cada 5 segundos
+
+        // Iniciar o redirecionamento automaticamente
         setInterval(redirecionar, intervalo);
     </script>
 </body>
